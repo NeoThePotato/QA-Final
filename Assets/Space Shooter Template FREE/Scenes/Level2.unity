@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 9c147f9d011b026488d4c0658fe3fc5e,
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 618281dc9a7d7d94f9e4dbd8f263498b,
     type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -208,7 +208,7 @@ PrefabInstance:
     - target: {fileID: 114004447756405556, guid: 01cf4a33fc66cde4abc060ccfeadeb5a,
         type: 3}
       propertyPath: TimeToMoveToNewLevel
-      value: 60
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
