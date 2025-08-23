@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// This script defines 'Enemy's' health and behavior. 
@@ -17,14 +19,28 @@ public class Enemy : MonoBehaviour {
     [Tooltip("VFX prefab generating after destruction")]
     public GameObject destructionVFX;
     public GameObject hitEffect;
-    
-    [HideInInspector] public int shotChance; //probability of 'Enemy's' shooting during tha path
-    [HideInInspector] public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
+
+    public bool shootForever = false;
+    public int shotChance; //probability of 'Enemy's' shooting during tha path
+    public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
     #endregion
 
     private void Start()
     {
         Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        if (shootForever)
+        {
+            StartCoroutine(ShootForever());
+        }
+    }
+
+    private IEnumerator ShootForever()
+    {
+        while (isActiveAndEnabled)
+        {
+            ActivateShooting();
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     //coroutine making a shot
