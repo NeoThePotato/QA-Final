@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 public class PlayerTests
 {
-	private const string TEST_FX = "Test Destruction FX", TEST_FX_CLONE = TEST_FX + "(Clone)";
+	private const string TEST_FX = "Test Destruction FX", TEST_FX_CLONE = TEST_FX + "(Clone)", PLAYER_TAG = "Player";
 	private static readonly System.Type[] PLAYER_COMPONENTS = { typeof(Player) };
 
 	private Player _player;
@@ -13,6 +13,7 @@ public class PlayerTests
 	public static Player CreatePlayer()
 	{
 		GameObject go = new("Test Player", PLAYER_COMPONENTS);
+		go.tag = PLAYER_TAG;
 		var player = go.GetComponent<Player>();
 		player.destructionFX = CreateDestructionFX();
 		return player;
