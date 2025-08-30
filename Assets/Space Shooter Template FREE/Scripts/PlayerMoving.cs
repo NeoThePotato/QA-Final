@@ -42,7 +42,7 @@ public class PlayerMoving : MonoBehaviour {
 #if UNITY_STANDALONE || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
 
             var mouse = Mouse.current;
-            if (mouse.leftButton.isPressed) //if mouse button was pressed       
+            if (mouse != null && mouse.leftButton.isPressed) //if mouse button was pressed       
             {
                 Vector3 mousePosition = mainCamera.ScreenToWorldPoint(mouse.position.value); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
@@ -53,7 +53,7 @@ public class PlayerMoving : MonoBehaviour {
             var touchScreen = Touchscreen.current;
 #if UNITY_IOS || UNITY_ANDROID //if current platform is mobile, 
 
-            if (touchScreen.touches.Count == 1) // if there is a touch
+            if (touchScreen != null && touchScreen.touches.Count == 1) // if there is a touch
             {
                 var touch = touchScreen.touches[0];
                 Vector3 touchPosition = mainCamera.ScreenToWorldPoint(touch.position.value);  //calculating touch position in the world space
@@ -61,7 +61,7 @@ public class PlayerMoving : MonoBehaviour {
                 transform.position = Vector3.MoveTowards(transform.position, touchPosition, 30 * Time.deltaTime);
             }
 #endif
-            transform.position = new Vector3    //if 'Player' crossed the movement borders, returning him back 
+			transform.position = new Vector3    //if 'Player' crossed the movement borders, returning him back 
                 (
                 Mathf.Clamp(transform.position.x, borders.minX, borders.maxX),
                 Mathf.Clamp(transform.position.y, borders.minY, borders.maxY),
