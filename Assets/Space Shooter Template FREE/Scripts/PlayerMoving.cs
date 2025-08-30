@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// This script defines the borders of ‘Player’s’ movement. Depending on the chosen handling type, it moves the ‘Player’ together with the pointer.
 /// </summary>
 
-[System.Serializable]
+[Serializable]
 public class Borders
 {
     [Tooltip("offset from viewport borders for player's movement")]
@@ -41,20 +41,22 @@ public class PlayerMoving : MonoBehaviour {
         {
 #if UNITY_STANDALONE || UNITY_EDITOR    //if the current platform is not mobile, setting mouse handling 
 
-            if (Input.GetMouseButton(0)) //if mouse button was pressed       
+            var mouse = Mouse.current;
+            if (mouse.leftButton.isPressed) //if mouse button was pressed       
             {
-                Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition); //calculating mouse position in the worldspace
+                Vector3 mousePosition = mainCamera.ScreenToWorldPoint(mouse.position.value); //calculating mouse position in the worldspace
                 mousePosition.z = transform.position.z;
                 transform.position = Vector3.MoveTowards(transform.position, mousePosition, 30 * Time.deltaTime);
             }
 #endif
 
+            var touchScreen = Touchscreen.current;
 #if UNITY_IOS || UNITY_ANDROID //if current platform is mobile, 
 
-            if (Input.touchCount == 1) // if there is a touch
+            if (touchScreen.touches.Count == 1) // if there is a touch
             {
-                Touch touch = Input.touches[0];
-                Vector3 touchPosition = mainCamera.ScreenToWorldPoint(touch.position);  //calculating touch position in the world space
+                var touch = touchScreen.touches[0];
+                Vector3 touchPosition = mainCamera.ScreenToWorldPoint(touch.position.value);  //calculating touch position in the world space
                 touchPosition.z = transform.position.z;
                 transform.position = Vector3.MoveTowards(transform.position, touchPosition, 30 * Time.deltaTime);
             }
