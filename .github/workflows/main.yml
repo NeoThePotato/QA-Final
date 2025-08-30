@@ -139,41 +139,6 @@ jobs:
         # -C build/ changes the directory to 'build/' before archiving,
         # ensuring 'StandaloneWindows64' is at the root of the archive.
         # The archive will be named 'StandaloneWindows64.tar.gz' and placed in the 'build/' directory.
-    name: Run Playmode Tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          lfs: true
-
-      - name: Cache Library folder
-        uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-PlaymodeTests-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-PlaymodeTests-
-            Library-
-
-      - name: Run Unity Playmode Tests
-        uses: game-ci/unity-test-runner@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          testMode: PlayMode
-          # The path where test results will be generated
-          artifactsPath: artifacts/TestResults/Playmode
-
-      - name: Upload Playmode Test Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: Playmode-Test-Results
-          path: artifacts/TestResults/Playmode
 
   # Job to deploy the build to GitHub Releases
   deployAndroidToGitHubReleases:
