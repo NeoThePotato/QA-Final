@@ -405,6 +405,7 @@ MonoBehaviour:
     wave: {fileID: 1177001650480530, guid: e64040bc8d8b82c45a9297ac9699e081, type: 3}
   - timeToStart: 52
     wave: {fileID: 1643244333601292, guid: d5985777a604bf240a36957329db29c1, type: 3}
+  boss: {fileID: 4417216157696721814, guid: 41ca2a0b3f506d849aef965ffc992a85, type: 3}
   powerUp: {fileID: 1180221311273546, guid: 71f89368f03bd5740a7f17e106b277bb, type: 3}
   timeForNewPowerup: 10
   planets:
@@ -415,6 +416,7 @@ MonoBehaviour:
   planetsSpeed: -1
   TimeToMoveToNewLevel: 5
   BlackScreen: {fileID: 6665227951039977797}
+  levelBoundries: {fileID: 0}
 --- !u!1 &1316734479581663889
 GameObject:
   m_ObjectHideFlags: 0

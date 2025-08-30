@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4073124609858142}
   - component: {fileID: 212742557042598518}
-  - component: {fileID: 114339271854877628}
   - component: {fileID: 5062230657741984908}
   - component: {fileID: 58425179734721642}
   - component: {fileID: 114640587493707362}
   - component: {fileID: 50267448758737772}
-  - component: {fileID: 5837927006576758106}
+  - component: {fileID: 4417216157696721814}
   m_Layer: 0
   m_Name: Enemy_BIG_BOSS
   m_TagString: Enemy
@@ -94,27 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114339271854877628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373690366928948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb93e18709841574888ca778559f3bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  Projectile: {fileID: 1728936453619090, guid: 43a098a63261ffa4dabd49e628766f2a, type: 3}
-  destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
-    type: 3}
-  hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
-  shootForever: 1
-  shotChance: 100
-  shotTimeMin: 1
-  shotTimeMax: 3
 --- !u!114 &5062230657741984908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373690366928948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb55924fc8ef444409698fed6ae69676, type: 3}
   m_Name: 
@@ -214,7 +192,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5837927006576758106
+--- !u!114 &4417216157696721814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,9 +201,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1373690366928948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1976fd3e020d33643bb01cd12ac42756, type: 3}
+  m_Script: {fileID: 11500000, guid: 9300cd5f6fc380341a507de9ea50aa3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 20
+  Projectile: {fileID: 1728936453619090, guid: 43a098a63261ffa4dabd49e628766f2a, type: 3}
+  destructionVFX: {fileID: 1280240331523082, guid: 45ae5851ef2832044bba82850372d67b,
+    type: 3}
+  hitEffect: {fileID: 1256001557233130, guid: 2dd0bdb7830e6644da169b32252dca96, type: 3}
+  shootForever: 1
+  shotChance: 100
+  shotTimeMin: 1
+  shotTimeMax: 3
   speed: 5
   changeInterval: 2
   levelBounds: {fileID: 0}
