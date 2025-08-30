@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour {
     public bool shootForever = false;
     public int shotChance; //probability of 'Enemy's' shooting during tha path
     public float shotTimeMin, shotTimeMax; //max and min time for shooting from the beginning of the path
+
+    private bool isDead = false;
     #endregion
 
     private void Start()
@@ -53,11 +55,15 @@ public class Enemy : MonoBehaviour {
     }
 
     //method of getting damage for the 'Enemy'
-    public void GetDamage(int damage) 
+    public void GetDamage(int damage)
     {
+        if (isDead) return;
         health -= damage;           //reducing health for damage value, if health is less than 0, starting destruction procedure
         if (health <= 0)
+        {
+            isDead = true;
             Destruction();
+        }
         else
             Instantiate(hitEffect,transform.position,Quaternion.identity,transform);
     }    
@@ -75,8 +81,8 @@ public class Enemy : MonoBehaviour {
     }
 
     //method of destroying the 'Enemy'
-    void Destruction()                           
-    {        
+    void Destruction()
+    {
         Instantiate(destructionVFX, transform.position, Quaternion.identity); 
         Destroy(gameObject);
     }
