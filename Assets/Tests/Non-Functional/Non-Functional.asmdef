@@ -1,0 +1,23 @@
+{
+    "name": "Non-Functional",
+    "rootNamespace": "",
+    "references": [
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:c0dd0d10738d4ad4a9de57c559d0ca1b",
+        "GUID:06b57377acb012340bed4df9c6025095",
+        "GUID:02e567d619938a5468e562c65744ccf8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
