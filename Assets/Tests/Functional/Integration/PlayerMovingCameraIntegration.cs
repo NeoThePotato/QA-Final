@@ -21,6 +21,9 @@ public class PlayerMovingCameraIntegration
 	public static Camera CreateMainCamera()
 	{
 		var camera = new GameObject().AddComponent<Camera>();
+		camera.transform.position = new(0f, 0f, -10f);
+		camera.orthographic = true;
+		camera.orthographicSize = 9f;
 		camera.tag = MAIN_CAMERA;
 		return camera;
 	}
