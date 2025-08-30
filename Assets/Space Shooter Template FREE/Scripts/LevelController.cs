@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 #region Serializable classes
 [System.Serializable]
@@ -16,11 +18,11 @@ public class EnemyWaves
 
 #endregion
 
-public class LevelController : MonoBehaviour {
-
+public class LevelController : MonoBehaviour 
+{
     //Serializable classes implements
-    public EnemyWaves[] enemyWaves; 
-
+    public EnemyWaves[] enemyWaves;
+    public BossEnemy boss;
     public GameObject powerUp;
     public float timeForNewPowerup;
     public GameObject[] planets;
@@ -32,6 +34,7 @@ public class LevelController : MonoBehaviour {
 
     public int TimeToMoveToNewLevel = 5;
     public SpriteRenderer BlackScreen;
+    public BoxCollider2D levelBoundries;
     private string Level2Name = "Level2";
 
     private void Start()
@@ -45,6 +48,12 @@ public class LevelController : MonoBehaviour {
         StartCoroutine(MoveToNextLevel());
         StartCoroutine(PowerupBonusCreation());
         StartCoroutine(PlanetsCreation());
+
+        if (SceneManager.GetActiveScene().name == Level2Name)
+        {
+            BossEnemy bossPrefab = Instantiate(boss);
+            bossPrefab.InitMovement(levelBoundries);
+        }
     }
 
     IEnumerator MoveToNextLevel()

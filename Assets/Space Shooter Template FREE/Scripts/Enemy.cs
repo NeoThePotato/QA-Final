@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
 
     private void Start()
     {
-        Invoke("ActivateShooting", Random.Range(shotTimeMin, shotTimeMax));
+        Invoke(nameof(ActivateShooting), Random.Range(shotTimeMin, shotTimeMax));
         if (shootForever)
         {
             StartCoroutine(ShootForever());
@@ -44,9 +44,9 @@ public class Enemy : MonoBehaviour {
     }
 
     //coroutine making a shot
-    void ActivateShooting() 
+    public void ActivateShooting(bool forceTrue = false) 
     {
-        if (Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
+        if (forceTrue || Random.value < (float)shotChance / 100)                             //if random value less than shot probability, making a shot
         {                         
             Instantiate(Projectile,  gameObject.transform.position, Quaternion.identity);             
         }
