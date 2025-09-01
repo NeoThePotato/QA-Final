@@ -436,7 +436,7 @@ MonoBehaviour:
   - {fileID: 1868464169396128, guid: 284631a95d42dc047b90d8af25ac4457, type: 3}
   timeBetweenPlanets: 15
   planetsSpeed: -1
-  TimeToMoveToNewLevel: 5
+  TimeToMoveToNewLevel: 60
   BlackScreen: {fileID: 6665227951039977797}
   levelBoundries: {fileID: 0}
 --- !u!1 &1316734479581663889
